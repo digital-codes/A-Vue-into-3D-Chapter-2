@@ -1,10 +1,10 @@
 import { Engine, Scene, Vector3, TransformNode, StandardMaterial, Color3 } from "@babylonjs/core";
 import { GUI3DManager } from "@babylonjs/gui";
-import { createCamera, createEnvironment, createLogo, createTitle, createGround } from "./scenehelpers/Housekeeping";
-import createStartMenu from "./scenehelpers/StartMenu";
-import createDetailCard from "./scenehelpers/DetailCard";
-import { createSpherePanel, populateCompactCard } from "./scenehelpers/CompactCard";
-import { createBackdrop, createControlPanelButton, createStackPanel } from "./scenehelpers/ControlPanel";
+import { createCamera, createEnvironment, createLogo, createTitle, createGround } from "./SceneHelpers/Housekeeping";
+import createStartMenu from "./SceneHelpers/StartMenu";
+import createDetailCard from "./SceneHelpers/DetailCard";
+import { createSpherePanel, populateCompactCard } from "./SceneHelpers/CompactCard";
+import { createBackdrop, createControlPanelButton, createStackPanel } from "./SceneHelpers/ControlPanel";
 import { brand } from "../helpers/brand";
 
 const SceneWrapper = {
@@ -29,7 +29,7 @@ const SceneWrapper = {
     createBackdrop();
     const ground = createGround(scene); // used for WebXR teleportation
     const cardMat = new StandardMaterial("compact-card-mat");
-    cardMat.diffuseColor = new Color3.FromHexString(brand.dark3);
+    cardMat.diffuseColor = new Color3(Color3.FromHexString(brand.dark3))
     cardMat.specularColor = new Color3(0.3, 0.3, 0.3);
 
     // Detail card

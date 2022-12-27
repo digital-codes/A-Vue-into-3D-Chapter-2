@@ -4,7 +4,7 @@ import { brand } from "../../helpers/brand";
 
 const createStartMenu = (startButtonCallback, scene) => {
   const cardMat = new StandardMaterial("start-card-mat", scene);
-  cardMat.diffuseColor = new Color3.FromHexString(brand.dark3);
+  cardMat.diffuseColor = new Color3(Color3.FromHexString(brand.dark3))
   cardMat.specularColor = new Color3(0.3, 0.3, 0.3);
   const card = MeshBuilder.CreateBox("start-card", { height: 0.8, width: 1.2, depth: 0.2 });
   card.material = cardMat;

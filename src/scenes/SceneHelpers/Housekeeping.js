@@ -2,6 +2,8 @@ import { ArcRotateCamera, HemisphericLight, Vector3, MeshBuilder, Mesh, Standard
 import { AdvancedDynamicTexture, StackPanel, TextBlock } from "@babylonjs/gui";
 import { brand } from "../../helpers/brand";
 
+//import { FromHexString } from "@babylonjs/core"
+
 const createCamera = (canvas, scene) => {
   // Add an ArcRotateCamera to the scene and attach it to the canvas
   // ArcRotateCamera is used to rotate the camera around the scene when not using WebXR
@@ -41,7 +43,9 @@ const createLogo = (scene) => {
 const makeBox = (colorName, parent, scene) => {
   // Create a colored box from using a string to get the color from the Brand object
   const mat = new StandardMaterial(`${colorName}-material`, scene);
-  mat.diffuseColor = new Color3.FromHexString(brand[colorName]);
+  //mat.diffuseColor = new Color3(.5,.5,.8) //FromHexString(brand[colorName]);
+  //console.log("Color:",Color3.FromHexString(brand[colorName]))
+  mat.diffuseColor = new Color3(Color3.FromHexString(brand[colorName]))
   mat.specularColor = new Color3(0.1, 0.1, 0.1);
   const mesh = MeshBuilder.CreateBox(`${colorName}-box`, { size: 0.5 }, scene);
   mesh.material = mat;
@@ -80,7 +84,7 @@ const createGround = (scene) => {
   const ground = MeshBuilder.CreateGround("ground", { height: 50, width: 60, subdivisions: 4 }, scene);
   const groundMat = new StandardMaterial("ground-material", scene);
   groundMat.alpha = 1;
-  groundMat.diffuseColor = new Color3.FromHexString(brand.dark4);
+  groundMat.diffuseColor = new Color3(Color3.FromHexString(brand.dark4))
   groundMat.specularColor = new Color3(0.2, 0.2, 0.2);
   ground.material = groundMat;
   return ground;
